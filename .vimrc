@@ -1,0 +1,1 @@
+/home/s4p10l/.vimrc
