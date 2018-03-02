@@ -1,0 +1,4 @@
+NOCONFIRM=1
+BUILD_NOCONFIRM=1  # Only prompt for editing files
+PU_NOCONFIRM=1     # Add --noconfirm to $PACMAN -U
+EDITFILES=0
