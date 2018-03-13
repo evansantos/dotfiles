@@ -3,7 +3,7 @@ if [[ -f /etc/os-release ]]; then
   OS=$NAME
 fi
 
-if [[ "$OS" == "Antergos Linux" ]]; then
+if [[ "$OS" == "Arch Linux" ]]; then
   ln -sfvn $HOME/.dotfiles/.yaourtrc ~/.yaourtrc
   source ~/.bashrc
 
@@ -29,6 +29,22 @@ if [[ "$OS" == "Antergos Linux" ]]; then
   else
     echo "\nOk, it's on your hands. :) Let's move on"
   fi
+
+  echo "Installing or updating NVM"
+  yaourt -Syu nvm --noconfirm
+
+  echo "Installing or updating Docker"
+  yaourt -Syu docker docker-compose --noconfirm
+
+  echo "Installing or updating xclip"
+  yaourtt -Syu xclip --noconfirm
+
+  echo "Generating SSH Key"
+  ssh-keygen -t rsa -b 4096 -C $git_config_user_email
+  ssh-add ~/.ssh/id_rsa
+  xclip -sel clip < ~/.ssh/id_rsa.pub
+  read -p "Key has been generated.\nPaste it on SSH Keys on BitBucket, GitLab or Github.\n\nThen push any button to continue..."
+
 
 else
   apt-get install git
