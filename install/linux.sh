@@ -37,7 +37,7 @@ if [[ "$OS" == "Arch Linux" ]]; then
   yaourt -Syu docker docker-compose --noconfirm
 
   echo "Installing or updating xclip"
-  yaourtt -Syu xclip --noconfirm
+  yaourt -Syu xclip --noconfirm
 
   echo "Generating SSH Key"
   ssh-keygen -t rsa -b 4096 -C $git_config_user_email
