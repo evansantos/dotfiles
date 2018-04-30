@@ -9,16 +9,14 @@ Plug 'airblade/vim-gitgutter'
 Plug 'kien/ctrlp.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'wavded/vim-stylus'
-Plug 'dracula/vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'tomasr/molokai'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'isRuslan/vim-es6'
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 
 call plug#end()
-
-colorscheme molokai
 
 " ┌───────────────────────────────────┐
 " │           General config          │
@@ -27,8 +25,9 @@ colorscheme molokai
 
 set shell=/bin/bash
 syntax on
+color dracula
 " Sets how many lines of history VIM has to remember
-set history=700
+set history=2000
 
 " Enable filetype plugins
 filetype plugin on
@@ -137,7 +136,7 @@ map <C-t> :FZF<CR>
 " │               Plugins             │
 " └───────────────────────────────────┘
 
-" Airline 
+" Airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#syntastic#enabled = 1
@@ -146,3 +145,6 @@ let g:airline#extensions#tabline#left_sep = '▶'
 let g:airline#extensions#tabline#right_sep = '◀'
 let g:airline_symbols#maxlinenr = '☰'
 let g:airline_theme = 'dark'
+
+" Ale
+let g:ale_completion_enabled = 1
