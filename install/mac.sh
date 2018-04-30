@@ -29,12 +29,18 @@ read -p "Key has been generated.\nPaste it on SSH Keys on BitBucket, GitLab or G
 
 # GPG
 brew install gpg
+brew install pinentry-mac
 gpg --full-generate-key
 gpg --list-secret-keys --keyid-format LONG | grep rsa
 echo "Copy keyID from sec and paste here"
 read gpg_keyid
+git config --global user.signingkey $gpg_keyid
+git config --global gpg.program gpg
 gpg --armor --export $gpg_keyid | pbcopy
 read -p "GPG Key has been generated.\nPaste it on GPG Keys on BitBucket, GitLab or Github.\n\nThen push any button to continue..."
+echo "no-tty" >> ~/.gnupg/gpg.conf
+touch ~/.gnupg/gpg-agent.conf
+echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
 
 # Homebrew
 sh brew/global.sh
